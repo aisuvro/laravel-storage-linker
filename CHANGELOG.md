@@ -2,6 +2,13 @@
 
 All notable changes to `laravel-storage-linker` will be documented in this file.
 
+## [1.0.1] - 2025-06-19
+
+### Fixed
+- Fixed symbolic link creation by replacing `File::link()` with native PHP `symlink()` function
+- Corrected hard link creation issue that prevented proper symbolic links from being established
+- Improved error handling and success messages for symlink operations
+
 ## [1.0.0] - 2025-06-19
 
 ### Added

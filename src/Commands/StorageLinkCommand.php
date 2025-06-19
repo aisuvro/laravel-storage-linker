@@ -165,9 +165,9 @@ class StorageLinkCommand extends Command
             return false;
         }
 
-        if (File::exists($symlinkPath)) {
+        if (file_exists($symlinkPath)) {
             if (!$this->option('force')) {
-                $this->warn("Symlink already exists for '{$diskName}': {$symlinkPath}");
+                $this->error('The "' . $symlinkPath . '" link already exists.');
                 return false;
             }
             
@@ -175,8 +175,8 @@ class StorageLinkCommand extends Command
         }
 
         try {
-            File::link($targetPath, $symlinkPath);
-            $this->info("Created symlink for '{$diskName}': {$symlinkPath} -> {$targetPath}");
+            symlink($targetPath, $symlinkPath);
+            $this->info('Symbolic link created successfully: ' . $symlinkPath . ' -> ' . $targetPath);
             return true;
         } catch (\Exception $e) {
             $this->error("Failed to create symlink for '{$diskName}': " . $e->getMessage());
@@ -216,7 +216,7 @@ class StorageLinkCommand extends Command
      */
     protected function getSymlinkPath(string $diskName): string
     {
-        return public_path("storage/{$diskName}");
+        return public_path("{$diskName}");
     }
 
     /**

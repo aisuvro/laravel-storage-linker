@@ -1,6 +1,14 @@
 # Laravel Storage Linker
 
+[![Latest Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/aisuvro/laravel-storage-linker)
+[![PHP Version](https://img.shields.io/badge/php-%5E8.1-787CB5.svg)](https://php.net)
+[![Laravel Version](https://img.shields.io/badge/laravel-%5E9.0%7C%5E10.0%7C%5E11.0-FF2D20.svg)](https://laravel.com)
+
 A Laravel package that provides an interactive way to create symbolic links for all your storage disks with local drivers.
+
+## Recent Updates (v1.0.1)
+
+🔧 **Fixed**: Resolved symbolic link creation issues by replacing hard link creation with proper symbolic links using native PHP `symlink()` function.
 
 ## Features
 
