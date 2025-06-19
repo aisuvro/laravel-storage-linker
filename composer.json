@@ -1,0 +1,46 @@
+{
+    "name": "aisuvro/laravel-storage-linker",
+    "description": "A Laravel package to create symbolic links for storage disks with interactive selection",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["laravel", "storage", "symlink", "filesystem", "disk"],
+    "authors": [
+        {
+            "name": "Md. Al Imran Suvro",
+            "email": "info@appenjel.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^9.0|^10.0|^11.0",
+        "illuminate/console": "^9.0|^10.0|^11.0",
+        "illuminate/filesystem": "^9.0|^10.0|^11.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7.0|^8.0|^9.0",
+        "phpunit/phpunit": "^9.0|^10.0|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aisuvro\\LaravelStorageLinker\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Aisuvro\\LaravelStorageLinker\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Aisuvro\\LaravelStorageLinker\\StorageLinkerServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test-coverage": "phpunit --coverage-html coverage"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
