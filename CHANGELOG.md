@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-storage-linker` will be documented in this file.
 
+## [1.1.0] - 2025-06-19
+
+### Added
+- Added support for explicit disk name parameter in storage:link command
+- Command now accepts disk name as argument: `php artisan storage:link {disk?}`
+- Enhanced flexibility: use interactive selection when no disk specified, or target specific disk directly
+
+### Changed
+- Updated command signature to accept optional disk parameter
+- Refactored command logic to handle both parameter-based and interactive modes
+
 ## [1.0.1] - 2025-06-19
 
 ### Fixed

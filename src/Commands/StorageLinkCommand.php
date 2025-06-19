@@ -13,6 +13,7 @@ class StorageLinkCommand extends Command
      * The name and signature of the console command.
      */
     protected $signature = 'storage:link-all 
+                            {disk? : The disk name to create symlink for}
                             {--all : Create links for all local disks} 
                             {--remove : Remove existing symlinks}
                             {--force : Force creation even if symlink exists}';
@@ -20,7 +21,7 @@ class StorageLinkCommand extends Command
     /**
      * The console command description.
      */
-    protected $description = 'Create symbolic links for storage disks with interactive selection';
+    protected $description = 'Create symbolic links for storage disks (specify disk name, use --all for all disks, or interactive selection)';
 
     /**
      * Execute the console command.
@@ -36,6 +37,12 @@ class StorageLinkCommand extends Command
         if (empty($disks)) {
             $this->error('No local disks found in your filesystem configuration.');
             return 1;
+        }
+
+        // Check if a specific disk name was provided
+        $diskName = $this->argument('disk');
+        if ($diskName) {
+            return $this->createSymlinkForDisk($diskName, $disks);
         }
 
         if ($this->option('all')) {
@@ -181,6 +188,28 @@ class StorageLinkCommand extends Command
         } catch (\Exception $e) {
             $this->error("Failed to create symlink for '{$diskName}': " . $e->getMessage());
             return false;
+        }
+    }
+
+    /**
+     * Create symlink for a specific disk by name.
+     */
+    protected function createSymlinkForDisk(string $diskName, array $disks): int
+    {
+        if (!isset($disks[$diskName])) {
+            $this->error("Disk '{$diskName}' not found or is not a local disk.");
+            $this->info('Available local disks: ' . implode(', ', array_keys($disks)));
+            return 1;
+        }
+
+        $config = $disks[$diskName];
+        
+        if ($this->createSymlink($diskName, $config)) {
+            $this->info("Symlink created successfully for disk '{$diskName}'.");
+            return 0;
+        } else {
+            $this->error("Failed to create symlink for disk '{$diskName}'.");
+            return 1;
         }
     }
 

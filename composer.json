@@ -1,6 +1,6 @@
 {
     "name": "aisuvro/laravel-storage-linker",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "A Laravel package to create symbolic links for storage disks with interactive selection",
     "type": "library",
     "license": "MIT",
