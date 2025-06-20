@@ -2,6 +2,13 @@
 
 All notable changes to `laravel-storage-linker` will be documented in this file.
 
+## [1.1.1] - 2025-06-20
+
+### Changed
+- Extended Laravel framework support to include Laravel 12.x
+- Updated illuminate package constraints to support ^9.0|^10.0|^11.0|^12.0
+- Updated orchestra/testbench to support ^7.0|^8.0|^9.0|^10.0
+
 ## [1.1.0] - 2025-06-19
 
 ### Added
